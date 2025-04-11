@@ -19,36 +19,51 @@ router.get('/tictactoe', function(req, res, next) {
       <title>Gender Reveal</title>
       <style>
         body {
-          font-family: Arial, sans-serif;
-          background-color: #f9f9f9;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          background-color: #f0f8ff;
           margin: 0;
           padding: 0;
         }
         h1, h2 {
-          color: #333;
+          color: #2c3e50;
+          text-align: center;
+        }
+        h1 {
+          margin-top: 20px;
+          font-size: 2.5em;
+        }
+        h2 {
+          margin-bottom: 20px;
+          font-size: 1.8em;
         }
         table {
           border-collapse: collapse;
           margin: 20px auto;
-          background-color: #fff;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          background-color: #ffffff;
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+          border-radius: 8px;
+          overflow: hidden;
         }
         td {
-          width: 60px;
-          height: 60px;
+          width: 70px;
+          height: 70px;
           text-align: center;
           vertical-align: middle;
           border: 1px solid #ddd;
-          font-size: 24px;
+          font-size: 28px;
           cursor: pointer;
-          transition: background-color 0.3s ease;
+          transition: background-color 0.3s ease, transform 0.2s ease;
         }
         td.hidden {
           color: transparent;
-          background-color: #f0f0f0;
+          background-color: #ecf0f1;
         }
         td:not(.hidden):hover {
-          background-color: #e0e0e0;
+          background-color: #bdc3c7;
+          transform: scale(1.1);
+        }
+        td.hidden:hover {
+          background-color: #dfe6e9;
         }
         #success-dialog {
           display: none;
@@ -56,19 +71,31 @@ router.get('/tictactoe', function(req, res, next) {
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
-          padding: 20px;
-          background-color: #4CAF50;
+          padding: 20px 30px;
+          background-color: #27ae60;
           color: white;
-          font-size: 18px;
-          border-radius: 8px;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          font-size: 20px;
+          font-weight: bold;
+          border-radius: 10px;
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
           text-align: center;
+          animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translate(-50%, -60%);
+          }
+          to {
+            opacity: 1;
+            transform: translate(-50%, -50%);
+          }
         }
       </style>
     </head>
     <body>
-      <h1 style="text-align: center;">Gender Reveal Party!!</h1>
-      <h2 style="text-align: center;">Play Tic Tac Toe</h2>
+      <h1>Gender Reveal Party!!</h1>
+      <h2>Play Tic Tac Toe</h2>
       <table>
         ${game.map((row, rowIndex) => `
           <tr>

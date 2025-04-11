@@ -31,21 +31,27 @@ router.get('/tictactoe', function(req, res, next) {
           font-size: 24px;
           cursor: pointer;
         }
+        .hidden {
+          color: transparent;
+        }
       </style>
     </head>
     <body>
       <h1 style="text-align: center;">Tic Tac Toe</h1>
       <table>
-        ${game.map(row => `
+        ${game.map((row, rowIndex) => `
           <tr>
-            ${row.map(cell => `<td>${cell}</td>`).join('')}
+            ${row.map((cell, colIndex) => `<td class="hidden" data-value="${cell}" data-row="${rowIndex}" data-col="${colIndex}"></td>`).join('')}
           </tr>
         `).join('')}
       </table>
       <script>
         document.querySelectorAll('td').forEach(cell => {
           cell.addEventListener('click', () => {
-            alert('Cell clicked: ' + cell.textContent);
+            if (cell.classList.contains('hidden')) {
+              cell.textContent = cell.getAttribute('data-value');
+              cell.classList.remove('hidden');
+            }
           });
         });
       </script>

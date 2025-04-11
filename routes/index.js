@@ -18,21 +18,37 @@ router.get('/tictactoe', function(req, res, next) {
     <head>
       <title>Gender Reveal</title>
       <style>
+        body {
+          font-family: Arial, sans-serif;
+          background-color: #f9f9f9;
+          margin: 0;
+          padding: 0;
+        }
+        h1, h2 {
+          color: #333;
+        }
         table {
           border-collapse: collapse;
           margin: 20px auto;
+          background-color: #fff;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         td {
-          width: 50px;
-          height: 50px;
+          width: 60px;
+          height: 60px;
           text-align: center;
           vertical-align: middle;
-          border: 1px solid black;
+          border: 1px solid #ddd;
           font-size: 24px;
           cursor: pointer;
+          transition: background-color 0.3s ease;
         }
-        .hidden {
+        td.hidden {
           color: transparent;
+          background-color: #f0f0f0;
+        }
+        td:not(.hidden):hover {
+          background-color: #e0e0e0;
         }
         #success-dialog {
           display: none;

@@ -38,6 +38,7 @@ router.get('/tictactoe', function(req, res, next) {
     </head>
     <body>
       <h1 style="text-align: center;">Gender Reveal Party!!</h1>
+      <h2 style="text-align: center;">Play Tic Tac Toe  </h2>
       <table>
         ${game.map((row, rowIndex) => `
           <tr>
@@ -54,7 +55,7 @@ router.get('/tictactoe', function(req, res, next) {
             }
             const allRevealed = Array.from(document.querySelectorAll('td')).every(td => !td.classList.contains('hidden'));
             if (allRevealed) {
-              alert('I am Singele!!');
+              alert('I am Single!!');
             }
           });
         });

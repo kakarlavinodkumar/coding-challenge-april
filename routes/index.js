@@ -34,11 +34,25 @@ router.get('/tictactoe', function(req, res, next) {
         .hidden {
           color: transparent;
         }
+        #success-dialog {
+          display: none;
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          padding: 20px;
+          background-color: #4CAF50;
+          color: white;
+          font-size: 18px;
+          border-radius: 8px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          text-align: center;
+        }
       </style>
     </head>
     <body>
       <h1 style="text-align: center;">Gender Reveal Party!!</h1>
-      <h2 style="text-align: center;">Play Tic Tac Toe  </h2>
+      <h2 style="text-align: center;">Play Tic Tac Toe</h2>
       <table>
         ${game.map((row, rowIndex) => `
           <tr>
@@ -46,6 +60,7 @@ router.get('/tictactoe', function(req, res, next) {
           </tr>
         `).join('')}
       </table>
+      <div id="success-dialog">I am Single!!</div>
       <script>
         document.querySelectorAll('td').forEach(cell => {
           cell.addEventListener('click', () => {
@@ -55,7 +70,8 @@ router.get('/tictactoe', function(req, res, next) {
             }
             const allRevealed = Array.from(document.querySelectorAll('td')).every(td => !td.classList.contains('hidden'));
             if (allRevealed) {
-              alert('I am Single!!');
+              const dialog = document.getElementById('success-dialog');
+              dialog.style.display = 'block';
             }
           });
         });

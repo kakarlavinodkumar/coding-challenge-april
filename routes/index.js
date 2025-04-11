@@ -60,7 +60,7 @@ router.get('/tictactoe', function(req, res, next) {
           </tr>
         `).join('')}
       </table>
-      <div id="success-dialog">I am Single!!</div>
+      <div id="success-dialog">I am Single!! 😊</div>
       <script>
         document.querySelectorAll('td').forEach(cell => {
           cell.addEventListener('click', () => {

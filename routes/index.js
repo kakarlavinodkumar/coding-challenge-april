@@ -8,15 +8,15 @@ router.get('/', function(req, res, next) {
 // API to display a Tic Tac Toe game with no winner
 router.get('/tictactoe', function(req, res, next) {
   const game = [
-    ['X', 'O', 'X'],
-    ['X', 'X', 'O'],
-    ['O', 'X', 'O']
+    ['G', 'B', 'G'],
+    ['G', 'G', 'B'],
+    ['B', 'G', 'B']
   ];
   const html = `
     <!DOCTYPE html>
     <html>
     <head>
-      <title>Tic Tac Toe</title>
+      <title>Gender Reveal</title>
       <style>
         table {
           border-collapse: collapse;
@@ -37,7 +37,7 @@ router.get('/tictactoe', function(req, res, next) {
       </style>
     </head>
     <body>
-      <h1 style="text-align: center;">Tic Tac Toe</h1>
+      <h1 style="text-align: center;">Gender Reveal Party!!</h1>
       <table>
         ${game.map((row, rowIndex) => `
           <tr>
@@ -51,6 +51,10 @@ router.get('/tictactoe', function(req, res, next) {
             if (cell.classList.contains('hidden')) {
               cell.textContent = cell.getAttribute('data-value');
               cell.classList.remove('hidden');
+            }
+            const allRevealed = Array.from(document.querySelectorAll('td')).every(td => !td.classList.contains('hidden'));
+            if (allRevealed) {
+              alert('I am Singele!!');
             }
           });
         });

@@ -67,10 +67,7 @@ router.get('/tictactoe', function(req, res, next) {
         }
         #success-dialog {
           display: none;
-          position: fixed;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
+          margin: 20px auto;
           padding: 20px 30px;
           background-color: #27ae60;
           color: white;
@@ -80,15 +77,16 @@ router.get('/tictactoe', function(req, res, next) {
           box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
           text-align: center;
           animation: fadeIn 0.5s ease-in-out;
+          width: fit-content;
         }
         @keyframes fadeIn {
           from {
             opacity: 0;
-            transform: translate(-50%, -60%);
+            transform: translateY(-10px);
           }
           to {
             opacity: 1;
-            transform: translate(-50%, -50%);
+            transform: translateY(0);
           }
         }
       </style>
@@ -96,6 +94,7 @@ router.get('/tictactoe', function(req, res, next) {
     <body>
       <h1>Gender Reveal Party!!</h1>
       <h2>Play Tic Tac Toe</h2>
+      <p style="text-align: center; font-size: 1.2em;">G = Girl, B = Boy</p>
       <table>
         ${game.map((row, rowIndex) => `
           <tr>
